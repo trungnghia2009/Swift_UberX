@@ -9,6 +9,7 @@ target 'Uber' do
   pod 'Firebase/Core'
   pod 'SDWebImage'
   pod 'JGProgressHUD'
-  pod 'GeoFire', '~> 4.0'
+  pod 'GeoFire', '~> 4.0.1'
+  pod 'SDWebImage'
 
 end

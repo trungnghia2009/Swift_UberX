@@ -159,8 +159,8 @@ class RegistrationController: UIViewController {
                     window.configure()
                 }
                 
-                self.dismiss(animated: true, completion: nil)
-                
+                //self.dismiss(animated: true, completion: nil)
+                PresenterManager.shared.show(vc: .containerController)
             }
         }
         

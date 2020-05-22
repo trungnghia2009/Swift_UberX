@@ -72,9 +72,9 @@ class CircularProgressView: UIView {
         pulsatingLayer.add(animation, forKey: "pulsing")
     }
     
-    func setProgressWithAnimation(duration: TimeInterval, value: Float, completion: (() -> Void)?) {
-        CATransaction.begin()
+    func setProgressWithAnimation(duration: TimeInterval, value: Float, completion: @escaping() -> Void) {
         CATransaction.setCompletionBlock(completion)
+        CATransaction.begin()
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = duration
@@ -83,6 +83,7 @@ class CircularProgressView: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         progressLayer.strokeEnd = CGFloat(value)
         progressLayer.add(animation, forKey: "animateProgress")
+        
         
         CATransaction.commit()
     }

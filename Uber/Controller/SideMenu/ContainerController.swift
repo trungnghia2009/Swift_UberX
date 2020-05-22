@@ -54,7 +54,8 @@ class ContainerController: UIViewController {
     private func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             print("Debug: Not login")
-            presentLoginScreen()
+            //presentLoginScreen()
+            PresenterManager.shared.show(vc: .loginController)
         } else {
             print("Debug: Welcome \(Auth.auth().currentUser!.email!)")
             configure()
@@ -63,9 +64,9 @@ class ContainerController: UIViewController {
     
     private func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        homeController.showLoader(true, withText: "Loading user...")
+//        homeController.showLoader(true, withText: "Loading user...")
         Service.shared.fetchUserData(uid: currentUid) { (user) in
-            self.homeController.showLoader(false)
+//            self.homeController.showLoader(false)
             self.user = user
         }
     }
@@ -73,8 +74,8 @@ class ContainerController: UIViewController {
     private func signOut() {
         do {
             try Auth.auth().signOut()
-            presentLoginScreen()
-            
+            //presentLoginScreen()
+            PresenterManager.shared.show(vc: .loginController)
         } catch {
             showAlert(withMessage: error.localizedDescription)
         }
@@ -187,24 +188,26 @@ extension ContainerController: MenuControllerDelegate {
         animateMenu(shouldExpand: false) { (_) in
             switch option {
                     
-                case .yourTrips:
-                    break
-                case .settings:
-                    guard let user = self.user else { return }
-                    let settingController = SettingsController(user: user)
-                    settingController.delegate = self
-                    self.present(controller: settingController)
+            case .yourTrips:
+                break
                 
-                case .logout:
-                    let alertController = UIAlertController(title: nil, message: "Are you sure you want to log out ?", preferredStyle: .actionSheet)
-                    
-                    alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
-                        self.signOut()
-                    }))
-                    alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
+            case .settings:
+                guard let user = self.user else { return }
+                let settingController = SettingsController(user: user)
+                settingController.delegate = self
+                self.present(controller: settingController)
+            
+            case .logout:
+                let alertController = UIAlertController(title: nil, message: "Are you sure you want to log out ?", preferredStyle: .actionSheet)
+                
+                alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+                    self.signOut()
+                }))
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            
+            }
             }
         }
 }

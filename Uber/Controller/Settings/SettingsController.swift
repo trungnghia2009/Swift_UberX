@@ -46,6 +46,7 @@ class SettingsController: UITableViewController {
         let frame = CGRect(x: 0, y: 0,
                            width: view.frame.width, height: 100)
         let view = UserInfoHeader(user: user, frame: frame)
+        view.delegate = self
         return view
     }()
     
@@ -190,4 +191,15 @@ extension SettingsController: AddLocationControllerDelegate {
     }
     
     
+}
+
+
+//MARK: - UserInfoHeaderDelegate
+extension SettingsController: UserInfoHeaderDelegate {
+    func editProfileTapped() {
+        logger(withDebug: "Navigate to Edit profile view...")
+        let controller = EditProfileController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
 }

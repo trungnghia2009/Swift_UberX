@@ -120,20 +120,28 @@ class PickupController: UIViewController {
     //MARK: - Selectors
     @objc func animateProgress() {
         circularProgressView.animatePulsatingLayer()
-        circularProgressView.setProgressWithAnimation(duration: 10, value: 0) {
+        circularProgressView.setProgressWithAnimation(duration: 60, value: 0) {
+//            DriverService.shared.updateTripState(trip: self.trip, state: .denied) { (error, ref) in
+//                if let error = error {
+//                    print("Debug: Something wrong with updating trip, \(error.localizedDescription)")
+//                    self.showAlert(withMessage: error.localizedDescription)
+//                    return
+//                }
+//                self.dismiss(animated: true, completion: nil)
+//            }
+        }
+    }
+    
+    @objc func handleDismissal() {
+        dismiss(animated: true) {
             DriverService.shared.updateTripState(trip: self.trip, state: .denied) { (error, ref) in
                 if let error = error {
                     print("Debug: Something wrong with updating trip, \(error.localizedDescription)")
                     self.showAlert(withMessage: error.localizedDescription)
                     return
                 }
-                self.dismiss(animated: true, completion: nil)
             }
         }
-    }
-    
-    @objc func handleDismissal() {
-        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleAcceptTrip() {

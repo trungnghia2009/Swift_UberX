@@ -53,6 +53,11 @@ class AddLocationController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.becomeFirstResponder() // Auto-focus in searchBar field
+    }
+    
     
     //MARK: - Helpers
     func configureTableView() {
@@ -67,6 +72,7 @@ class AddLocationController: UITableViewController {
         searchBar.sizeToFit() // put search bar inside of the navigation controller size
         searchBar.delegate = self
         searchBar.placeholder = "Search..."
+        searchBar.returnKeyType = .done
         navigationItem.titleView = searchBar
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_clear_white_36pt_2x"), style: .plain, target: self, action: #selector(handleDismissal))
@@ -118,6 +124,11 @@ extension AddLocationController: UISearchBarDelegate {
     // Run whenever text did change in searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(false)
+        logger(withDebug: "Click Done...")
     }
 }
 

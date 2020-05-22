@@ -143,7 +143,8 @@ class LoginController: UIViewController {
             
             
             print("Debug: handle login sucessful here...")
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
+            PresenterManager.shared.show(vc: .containerController)
             
         }
     }

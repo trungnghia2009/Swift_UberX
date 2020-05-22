@@ -154,7 +154,7 @@ class HomeController: UIViewController {
         
     private let currentLocationButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "icon_current_place").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "icons8-street-view-100").withRenderingMode(.alwaysOriginal), for: .normal)
         button.setDimensions(height: 24, width: 24)
         button.addTarget(self, action: #selector(handleCurrentLocation), for: .touchUpInside)
         return button
@@ -188,14 +188,17 @@ class HomeController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
+    
     //MARK: - Passenger API
     // https://www.udemy.com/course/programmatic-uber-clone-swift-firebase-no-storyboards/learn/lecture/17211508#overview
     private func fetchDrivers() {
         guard let location = locationManager?.location else { return }
-        showLoader(true, withText: "Updating Drivers...")
         PassengerService.shared.fetchDrivers(location: location) { (driver) in
             
-            self.showLoader(false)
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.uid, coordinate: coordinate)
             print("Debug: Driver Coordinate is \(coordinate)")
@@ -275,7 +278,8 @@ class HomeController: UIViewController {
         
         
         view.addSubview(currentLocationButton)
-        currentLocationButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, right:view.rightAnchor, paddingTop: 5, paddingRight: 12)
+        currentLocationButton.centerX(inView: view)
+        currentLocationButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 5)
         
         view.addSubview(inputActivationView)
         inputActivationView.centerX(inView: view)
@@ -296,6 +300,8 @@ class HomeController: UIViewController {
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        mapView.showAnnotations(mapView.annotations, animated: true)
+        
     }
     
     private func configureSavedUserLocations() {

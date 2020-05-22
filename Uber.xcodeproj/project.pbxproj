@@ -22,6 +22,9 @@
 		2C27C63F246FDBC600671736 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27C63E246FDBC600671736 /* MenuHeader.swift */; };
 		2C27C64124703B5400671736 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27C64024703B5400671736 /* SettingsController.swift */; };
 		2C27C6432470557700671736 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27C6422470557700671736 /* UserInfoHeader.swift */; };
+		2C659E192476207300E43266 /* PresenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C659E182476207300E43266 /* PresenterManager.swift */; };
+		2C659E1B2476737200E43266 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C659E1A2476737200E43266 /* EditProfileController.swift */; };
+		2C659E1D2476DEB200E43266 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C659E1C2476DEB200E43266 /* Helper.swift */; };
 		2C78BE13246B6D3600CACB29 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78BE12246B6D3600CACB29 /* RideActionView.swift */; };
 		2C78BE15246BE23B00CACB29 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78BE14246BE23B00CACB29 /* Trip.swift */; };
 		2C78BE17246C320B00CACB29 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78BE16246C320B00CACB29 /* PickupController.swift */; };
@@ -61,6 +64,9 @@
 		2C27C63E246FDBC600671736 /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
 		2C27C64024703B5400671736 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2C27C6422470557700671736 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
+		2C659E182476207300E43266 /* PresenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterManager.swift; sourceTree = "<group>"; };
+		2C659E1A2476737200E43266 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		2C659E1C2476DEB200E43266 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2C78BE12246B6D3600CACB29 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
 		2C78BE14246BE23B00CACB29 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		2C78BE16246C320B00CACB29 /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 		2C164E1C24668DA20031CB14 /* Uber */ = {
 			isa = PBXGroup;
 			children = (
+				2C659E172476204700E43266 /* Manager */,
 				2C164E3524668DCF0031CB14 /* Model */,
 				2C164E3424668DCE0031CB14 /* View */,
 				2CA2B6582467EE5A00E29C7F /* ViewModel */,
@@ -140,6 +147,7 @@
 				2C164E3A2466B0060031CB14 /* Extension.swift */,
 				2C84D3C424694C9D00B3C63E /* Constants.swift */,
 				2C88B234246A1CA50099149F /* LocationHandler.swift */,
+				2C659E1C2476DEB200E43266 /* Helper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -200,11 +208,20 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
+		2C659E172476204700E43266 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2C659E182476207300E43266 /* PresenterManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		2C7EF4B22470DE8D00E50888 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				2C27C64024703B5400671736 /* SettingsController.swift */,
 				2C7EF4B3247128F400E50888 /* AddLocationController.swift */,
+				2C659E1A2476737200E43266 /* EditProfileController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -363,9 +380,12 @@
 				2C78BE13246B6D3600CACB29 /* RideActionView.swift in Sources */,
 				2C164E392466A41C0031CB14 /* LoginController.swift in Sources */,
 				2CA2B65C2467F3F500E29C7F /* RegistrationViewModel.swift in Sources */,
+				2C659E1B2476737200E43266 /* EditProfileController.swift in Sources */,
 				2C27C63F246FDBC600671736 /* MenuHeader.swift in Sources */,
 				2C84D3C324694A6600B3C63E /* Service.swift in Sources */,
 				2C88B235246A1CA50099149F /* LocationHandler.swift in Sources */,
+				2C659E1D2476DEB200E43266 /* Helper.swift in Sources */,
+				2C659E192476207300E43266 /* PresenterManager.swift in Sources */,
 				2CA2B6612468399800E29C7F /* HomeController.swift in Sources */,
 				2C164E1E24668DA20031CB14 /* AppDelegate.swift in Sources */,
 				2C7EF4B4247128F400E50888 /* AddLocationController.swift in Sources */,
